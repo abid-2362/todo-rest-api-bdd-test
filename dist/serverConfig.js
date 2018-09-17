@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
-    port: 3000
+    port: process.env.PORT || 3000,
+    apiUrl: '/todo/api/v1.0'
 };
 //# sourceMappingURL=serverConfig.js.map

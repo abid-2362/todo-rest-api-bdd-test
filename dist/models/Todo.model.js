@@ -2,10 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose = require("mongoose");
 var TodoSchema = new mongoose.Schema({
-    // id: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   required: true,
-    // },
     title: {
         type: String,
         required: true,
