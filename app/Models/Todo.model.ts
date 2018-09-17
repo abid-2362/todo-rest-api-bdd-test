@@ -6,10 +6,6 @@ export interface ITodoModel extends mongoose.Document {
 }
 
 let TodoSchema = new mongoose.Schema({
-  // id: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   required: true,
-  // },
   title: {
     type: String,
     required: true,
