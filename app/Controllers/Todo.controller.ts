@@ -1,6 +1,11 @@
 import Todo from "../Models/Todo.model";
 import { Request, Response } from "express";
 
+interface todoTemplate {
+  title: string,
+  description: string,
+  done: boolean
+}
 export default class TodoController {
   public createNewTask(req: Request, res: Response) {
     let newTodo = new Todo();
@@ -41,11 +46,27 @@ export default class TodoController {
     });
   }
 
-  public deleteTask(taskId: string) {
-    // ...
+  public deleteTask(req: Request, res: Response) {
+    let taskId = req.params.id;
+    Todo.findByIdAndRemove(taskId, (err, result) => {
+      if(err) res.send({status: 'error', message: 'Error in deleting the task'});
+      else if(result === null) res.send({status: "error", message: "It seems like this task has already been deleted."});
+      else res.send({status: "ok", message: 'Task deleted successfully'});
+    });
   }
 
-  public updateTask(taskId: string) {
-    // ...
+  public updateTask(req: Request, res: Response) {
+    let taskId = req.params.id;
+    let task: todoTemplate = {
+      title: req.body.title,
+      description: req.body.description,
+      done: req.body.done
+    };
+    Todo.findByIdAndUpdate(taskId, task, {new: true, select: "_id title description done"}, (err, result) => {
+      if(err)
+        res.send({status: "error", message: "We are unable to save this task. please try later"});
+      else
+        res.send({status: "ok", message: "Task Updated", newTask: result});
+    });
   }
 }

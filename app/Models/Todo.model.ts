@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-interface ITodoModel extends mongoose.Document {
+export interface ITodoModel extends mongoose.Document {
   title: string;
   description: string;
   done: boolean;
