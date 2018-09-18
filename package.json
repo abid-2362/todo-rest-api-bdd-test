@@ -4,7 +4,7 @@
   "description": "to do rest api with type script",
   "main": "dist/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nodemon --exec \"mocha dist/test\"",
     "build": "tsc",
     "start": "node dist/server.js"
   },
