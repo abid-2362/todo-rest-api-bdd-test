@@ -47,8 +47,8 @@ var should = require("should");
 //   });
 // });
 // Get Todo
-describe("Get Todo", function () {
-    it("Get all Todos coreclty", function () { return __awaiter(_this, void 0, void 0, function () {
+describe("Get Todos", function () {
+    it("Retrieve list of tasks", function () { return __awaiter(_this, void 0, void 0, function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
@@ -63,7 +63,7 @@ describe("Get Todo", function () {
 });
 // Post
 describe("Post Todo", function () {
-    it("Post a new Todo", function (done) {
+    it("Create a new task", function (done) {
         request(app)
             .post("/todo/api/v1.0/tasks")
             .send({
@@ -75,6 +75,18 @@ describe("Post Todo", function () {
             done();
         })
             .catch(done);
+    });
+});
+// PUT
+describe("Update Todo", function () {
+    it("Update an existing task", function (done) {
+        request(app)
+            .put("/todo/api/v1.0/tasks:id")
+            .send("{}")
+            .expect(200)
+            .end(function (err, res) {
+            done();
+        });
     });
 });
 //# sourceMappingURL=todo.spec.js.map

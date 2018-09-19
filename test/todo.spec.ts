@@ -14,8 +14,8 @@ const should = require("should");
 // });
 
 // Get Todo
-describe("Get Todo", () => {
-  it("Get all Todos coreclty", async () => {
+describe("Get Todos", () => {
+  it("Retrieve list of tasks", async () => {
     const response = await request(app).get("/todo/api/v1.0/tasks");
     assert(response.status === 200);
   });
@@ -23,7 +23,7 @@ describe("Get Todo", () => {
 
 // Post
 describe("Post Todo", () => {
-  it("Post a new Todo", function(done) {
+  it("Create a new task", function(done) {
     request(app)
       .post("/todo/api/v1.0/tasks")
       .send({
@@ -35,5 +35,18 @@ describe("Post Todo", () => {
         done();
       })
       .catch(done);
+  });
+});
+
+// PUT
+describe("Update Todo", function() {
+  it("Update an existing task", function(done) {
+    request(app)
+      .put("/todo/api/v1.0/tasks:id")
+      .send("{}")
+      .expect(200)
+      .end(function(err, res) {
+        done();
+      });
   });
 });
