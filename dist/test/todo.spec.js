@@ -40,11 +40,13 @@ require("mocha");
 var assert = require("assert");
 var app = require("../app/server");
 var request = require("supertest");
+var should = require("should");
 // describe("Test command", () => {
 //   it("this is test", () => {
 //     assert(2 + 4 === 6);
 //   });
 // });
+// Get Todo
 describe("Get Todo", function () {
     it("Get all Todos coreclty", function () { return __awaiter(_this, void 0, void 0, function () {
         var response;
@@ -58,5 +60,21 @@ describe("Get Todo", function () {
             }
         });
     }); });
+});
+// Post
+describe("Post Todo", function () {
+    it("Post a new Todo", function (done) {
+        request(app)
+            .post("/todo/api/v1.0/tasks")
+            .send({
+            title: "test_title",
+            description: "test_description"
+        })
+            .then(function (res) {
+            res.statusCode.should.eql(200);
+            done();
+        })
+            .catch(done);
+    });
 });
 //# sourceMappingURL=todo.spec.js.map
