@@ -61,6 +61,18 @@ describe("Get Todos", function () {
         });
     }); });
 });
+// Get a specific Todo
+describe("GET a single Todo", function () {
+    it("Retrieve a task", function (done) {
+        request(app)
+            .get("/todo/api/v1.0/tasks:id")
+            .send("{}")
+            .expect(200)
+            .end(function (err, res) {
+            done();
+        });
+    });
+});
 // Post
 describe("Post Todo", function () {
     it("Create a new task", function (done) {
