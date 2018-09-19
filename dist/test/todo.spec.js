@@ -89,4 +89,16 @@ describe("Update Todo", function () {
         });
     });
 });
+// Delete
+describe("DELTE Todo", function () {
+    it("Delete an existing task", function (done) {
+        request(app)
+            .delete("/todo/api/v1.0/tasks:id")
+            .send("{}")
+            .expect(200)
+            .end(function (err, res) {
+            done();
+        });
+    });
+});
 //# sourceMappingURL=todo.spec.js.map
